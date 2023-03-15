@@ -25,22 +25,27 @@ class CRUD:
     def Supprimer_Employes(self, id):
         cursor = self.bdd.cursor()
         cursor.execute("delete from employes where id=(%s);", (id,))
+        self.bdd.commit()
+
 
     def Ajouter_Employes(self, nom, prenom, salaire, id_service):
         cursor = self.bdd.cursor()
         cursor.execute("insert into employes (nom,prenom,salaire,id_service) values (%s, %s, %s, %s);",
                        (nom, prenom, salaire, id_service))
+        self.bdd.commit()
 
     def Modifier_Salaire(self, id, salaire):
         cursor = self.bdd.cursor()
         cursor.execute("update employes set salaire=(%s) where id=(%s);", (salaire, id,))
+        self.bdd.commit()
+
 
     def Fermer_Session(self):
         cursor= self.bdd.cursor()
         cursor.close()
 
 
-crud = CRUD("localhost", "root", "rootmdp", "laplateforme")
+crud = CRUD("localhost", "root", "ClemsSQL!13", "laplateforme")
 crud.Afficher_Employes()
 crud.Afficher_Employes3K()
 print("---------------------")

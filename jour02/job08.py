@@ -24,17 +24,24 @@ class Zoo:
     def Supprimer_Animal(self, id):
         cursor = self.bdd.cursor()
         cursor.execute("delete from animal where id=(%s);", (id,))
+        self.bdd.commit()
     def Ajouter_Cage(self,superficie, id_cage,capacite):
         cursor = self.bdd.cursor()
         cursor.execute("insert into cage (superficie,id_cage,capacite) values (%s, %s, %s);",(superficie,id_cage,capacite))
+        self.bdd.commit()
+
 
     def Ajouter_Animal(self, nom, race, id_cage, naissance,origine):
         cursor = self.bdd.cursor()
         cursor.execute("insert into animal (nom,race,id_cage,naissance,origine) values (%s, %s, %s, %s,%s);",(nom, race, id_cage, naissance,origine))
+        self.bdd.commit()
+
 
     def Deplacer_Animal(self, id_cage, id):
         cursor = self.bdd.cursor()
         cursor.execute("update animal set id_cage=(%s) where id=(%s);", (id_cage, id,))
+        self.bdd.commit()
+
 
     def Fermer_Session(self):
         cursor= self.bdd.cursor()
