@@ -45,7 +45,7 @@ class CRUD:
         cursor.close()
 
 
-crud = CRUD("localhost", "root", "ClemsSQL!13", "laplateforme")
+crud = CRUD("localhost", "root", "rootmdp", "laplateforme")
 crud.Afficher_Employes()
 crud.Afficher_Employes3K()
 print("---------------------")
